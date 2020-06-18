@@ -28,7 +28,7 @@ public class MainTask extends TimerTask {
                 location = utils.getLocation();
                 latestRun = System.currentTimeMillis();
             } catch (IOException e) {
-                e.printStackTrace();
+                utils.showException(e);
                 latestRun = 0;
                 return;
             }

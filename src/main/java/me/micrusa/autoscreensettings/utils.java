@@ -5,10 +5,10 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import javax.swing.*;
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
-import java.nio.charset.Charset;
 import java.util.Calendar;
 import java.util.Properties;
 
@@ -25,28 +25,18 @@ public class utils {
             try {
                 settingsFile.createNewFile();
             } catch (IOException e) {
-                e.printStackTrace();
+                showException(e);
             }
         }
 
         FileReader reader = null;
+        Properties props = new Properties();
         try {
             reader = new FileReader(settingsFile);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        Properties props = new Properties();
-
-        try {
             props.load(reader);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
             reader.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            showException(e);
         }
         return props;
     }
@@ -61,19 +51,13 @@ public class utils {
         if(!settingsFile.exists()) {
             try {
                 settingsFile.createNewFile();
+                FileOutputStream outputStream = new FileOutputStream(settingsFile);
+                props.store(outputStream, null);
+                outputStream.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                showException(e);
             }
         }
-
-        try {
-            FileOutputStream outputStream = new FileOutputStream(settingsFile);
-            props.store(outputStream, null);
-            outputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 
     public static double[] getLocation() throws IOException {
@@ -93,6 +77,8 @@ public class utils {
         return ss;
     }
 
-
-
+    public static void showException(Exception e){
+        JOptionPane.showMessageDialog(new JFrame(), "There was an exception in the code: " + e.toString(), "AutoScreenSettings Exception",
+                JOptionPane.ERROR_MESSAGE);
+    }
 }
