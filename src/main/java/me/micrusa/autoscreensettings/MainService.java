@@ -7,18 +7,26 @@ import java.util.Timer;
 public class MainService {
 
     private static MainService mainService;
-    private static Timer mainTaskTimer;
+    private Timer mainTaskTimer;
 
     public MainService(){
         mainTaskTimer = new Timer();
     }
 
-    public static void startService(){
+    public static MainService getMainService(){
+        return mainService;
+    }
+
+    public static MainService setupMainService(){
         mainService = new MainService();
+        return mainService;
+    }
+
+    public void startService(){
         mainTaskTimer.scheduleAtFixedRate(new MainTask(), 0, 20 * 60 * 1000 /*Every 20m*/);
     }
 
-    public static void stopService(){
+    public void stopService(){
         mainTaskTimer.cancel();
     }
 
