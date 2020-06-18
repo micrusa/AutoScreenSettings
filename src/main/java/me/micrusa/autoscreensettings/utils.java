@@ -67,7 +67,9 @@ public class utils {
         }
 
         try {
-            props.store(new FileOutputStream(settingsFile), null);
+            FileOutputStream outputStream = new FileOutputStream(settingsFile);
+            props.store(outputStream, null);
+            outputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
