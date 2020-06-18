@@ -15,8 +15,7 @@ public class Main {
             props.setProperty(Constants.PROP_NIGHT_CONTRAST, "70");
             utils.saveProps(props);
         }
-        MainService.setupMainService();
-        MainService.getMainService().startService();
+        MainService.setupMainService().startService();
     }
 
 }
