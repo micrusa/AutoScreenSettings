@@ -48,16 +48,15 @@ public class utils {
         if(!appData.exists())
             appData.mkdirs();
 
-        if(!settingsFile.exists()) {
             try {
-                settingsFile.createNewFile();
+                if(!settingsFile.exists())
+                    settingsFile.createNewFile();
                 FileOutputStream outputStream = new FileOutputStream(settingsFile);
                 props.store(outputStream, null);
                 outputStream.close();
             } catch (IOException e) {
                 showException(e);
             }
-        }
     }
 
     public static double[] getLocation() throws IOException {

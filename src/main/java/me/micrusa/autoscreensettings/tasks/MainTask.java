@@ -36,14 +36,18 @@ public class MainTask extends TimerTask {
         if(SunriseSunset.isDay(location[0], location[1])){
             for (Monitor monitor : monitorController.getMonitors()){
                 System.out.println("Applying settings for monitor " + monitor.getName());
-                monitor.setBrightness(Integer.parseInt(props.getProperty(Constants.PROP_NORMAL_BRIGHTNESS)));
-                monitor.setContrast(Integer.parseInt(props.getProperty(Constants.PROP_NORMAL_BRIGHTNESS)));
+                if(Boolean.parseBoolean(props.getProperty(Constants.PROP_BRIGHTNESS_ENABLED)))
+                    monitor.setBrightness(Integer.parseInt(props.getProperty(Constants.PROP_NORMAL_BRIGHTNESS)));
+                if(Boolean.parseBoolean(props.getProperty(Constants.PROP_CONTRAST_ENABLED)))
+                    monitor.setContrast(Integer.parseInt(props.getProperty(Constants.PROP_NORMAL_BRIGHTNESS)));
             }
         } else {
             for (Monitor monitor : monitorController.getMonitors()){
                 System.out.println("Applying settings for monitor " + monitor.getName());
-                monitor.setBrightness(Integer.parseInt(props.getProperty(Constants.PROP_NIGHT_BRIGHTNESS)));
-                monitor.setContrast(Integer.parseInt(props.getProperty(Constants.PROP_NIGHT_CONTRAST)));
+                if(Boolean.parseBoolean(props.getProperty(Constants.PROP_BRIGHTNESS_ENABLED)))
+                    monitor.setBrightness(Integer.parseInt(props.getProperty(Constants.PROP_NIGHT_BRIGHTNESS)));
+                if(Boolean.parseBoolean(props.getProperty(Constants.PROP_CONTRAST_ENABLED)))
+                    monitor.setContrast(Integer.parseInt(props.getProperty(Constants.PROP_NIGHT_BRIGHTNESS)));
             }
         }
     }
