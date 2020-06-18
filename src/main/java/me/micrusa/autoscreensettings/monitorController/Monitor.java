@@ -6,16 +6,14 @@ public class Monitor {
 
     private WinNT.HANDLE handle;
     private String name;
-    private int id;
 
-    public Monitor(WinNT.HANDLE hPhysicalMonitor, String szPhysicalMonitorDescription, int Id) {
+    public Monitor(WinNT.HANDLE hPhysicalMonitor, String szPhysicalMonitorDescription) {
         this.handle = hPhysicalMonitor;
         this.name = szPhysicalMonitorDescription;
-        this.id = Id;
     }
 
-    public int getMonitorId(){
-        return this.id;
+    public String getName() {
+        return this.name;
     }
 
     public int[] getBrightness() throws Win32Exception {

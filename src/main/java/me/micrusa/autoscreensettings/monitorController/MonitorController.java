@@ -34,7 +34,7 @@ public class MonitorController {
                 for (PhysicalMonitorEnumerationAPI.PHYSICAL_MONITOR mon : physMons)
                 {
                     String desc = new String(mon.szPhysicalMonitorDescription);
-                    monitors.add(new Monitor(mon.hPhysicalMonitor, desc, i++));
+                    monitors.add(new Monitor(mon.hPhysicalMonitor, desc));
                 }
 
                 return 1;

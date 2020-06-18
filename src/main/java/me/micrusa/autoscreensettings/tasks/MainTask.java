@@ -35,13 +35,13 @@ public class MainTask extends TimerTask {
         }
         if(SunriseSunset.isDay(location[0], location[1])){
             for (Monitor monitor : monitorController.getMonitors()){
-                System.out.println("Applying settings for monitor " + monitor.getMonitorId());
+                System.out.println("Applying settings for monitor " + monitor.getName());
                 monitor.setBrightness(Integer.parseInt(props.getProperty(Constants.PROP_NORMAL_BRIGHTNESS)));
                 monitor.setContrast(Integer.parseInt(props.getProperty(Constants.PROP_NORMAL_BRIGHTNESS)));
             }
         } else {
             for (Monitor monitor : monitorController.getMonitors()){
-                System.out.println("Applying settings for monitor " + monitor.getMonitorId());
+                System.out.println("Applying settings for monitor " + monitor.getName());
                 monitor.setBrightness(Integer.parseInt(props.getProperty(Constants.PROP_NIGHT_BRIGHTNESS)));
                 monitor.setContrast(Integer.parseInt(props.getProperty(Constants.PROP_NIGHT_CONTRAST)));
             }
