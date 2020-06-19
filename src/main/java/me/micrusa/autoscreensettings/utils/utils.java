@@ -60,16 +60,6 @@ public class utils {
             }
     }
 
-    public static double[] getLocation() throws IOException {
-        URL url = new URL("http://ip-api.com/json");
-        URLConnection request = url.openConnection();
-        request.connect();
-        JsonParser jp = new JsonParser();
-        JsonElement root = jp.parse(new InputStreamReader((InputStream) request.getContent()));
-        JsonObject rootobj = root.getAsJsonObject();
-        return new double[]{rootobj.get("lat").getAsDouble(), rootobj.get("lon").getAsDouble()};
-    }
-
     public static Calendar[] getSunriseSunset(double lat, double lon){
         Calendar TODAY = Calendar.getInstance();
         Calendar[] ss = SunriseSunset.getSunriseSunset(TODAY, lat, lon);

@@ -1,6 +1,14 @@
 package me.micrusa.autoscreensettings.utils;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 
 public class LocationUtils {
     private static double[] location;
@@ -21,7 +29,7 @@ public class LocationUtils {
     public static void calcLocation(){
         if(lastQuery == 0 || System.currentTimeMillis() - lastQuery >= 24 * 60 * 1000){
             try {
-                location = utils.getLocation();
+                location = queryLocation();
                 System.out.println("Got location " + location[0] + ", " + location[1]);
                 lastQuery = System.currentTimeMillis();
             } catch (IOException e) {
@@ -31,6 +39,16 @@ public class LocationUtils {
                 utils.showException(e);
             }
         }
+    }
+
+    private static double[] queryLocation() throws IOException {
+        URL url = new URL("http://ip-api.com/json");
+        URLConnection request = url.openConnection();
+        request.connect();
+        JsonParser jp = new JsonParser();
+        JsonElement root = jp.parse(new InputStreamReader((InputStream) request.getContent()));
+        JsonObject rootobj = root.getAsJsonObject();
+        return new double[]{rootobj.get("lat").getAsDouble(), rootobj.get("lon").getAsDouble()};
     }
 
 
