@@ -26,7 +26,7 @@ public class LocationUtils {
         return location[1];
     }
 
-    public static void calcLocation(){
+    private static void calcLocation(){
         if(lastQuery == 0 || System.currentTimeMillis() - lastQuery >= 24 * 60 * 1000){
             try {
                 location = queryLocation();
