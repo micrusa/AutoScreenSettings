@@ -21,15 +21,15 @@ public class Settings implements ActionListener {
 
         JCheckBox enableBrightness = new JCheckBox("Enable brightness control",
                 Boolean.parseBoolean(props.getProperty(Constants.PROP_BRIGHTNESS_ENABLED)));
-        JLabel brightnessLabel = new JLabel("Normal Brightness: ", JLabel.RIGHT);
+        JLabel brightnessLabel = new JLabel("Normal Brightness ", JLabel.RIGHT);
         JTextField brightness = new JTextField(props.getProperty(Constants.PROP_NORMAL_BRIGHTNESS));
-        JLabel nightBrightnessLabel = new JLabel("Night Brightness", JLabel.RIGHT);
+        JLabel nightBrightnessLabel = new JLabel("Night Brightness ", JLabel.RIGHT);
         JTextField nightBrightness = new JTextField(props.getProperty(Constants.PROP_NIGHT_BRIGHTNESS));
         JCheckBox enableContrast = new JCheckBox("Enable contrast control",
                 Boolean.parseBoolean(props.getProperty(Constants.PROP_CONTRAST_ENABLED)));
-        JLabel contrastLabel = new JLabel("Normal Contrast: ", JLabel.RIGHT);
+        JLabel contrastLabel = new JLabel("Normal Contrast ", JLabel.RIGHT);
         JTextField contrast = new JTextField(props.getProperty(Constants.PROP_NORMAL_CONTRAST));
-        JLabel nightContrastLabel = new JLabel("Night contrast: ", JLabel.RIGHT);
+        JLabel nightContrastLabel = new JLabel("Night contrast ", JLabel.RIGHT);
         JTextField nightContrast = new JTextField(props.getProperty(Constants.PROP_NIGHT_CONTRAST));
         settingsPanel = new JPanel(false);
         settingsPanel.setLayout(new BoxLayout(settingsPanel,
