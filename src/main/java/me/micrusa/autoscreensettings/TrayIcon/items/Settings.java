@@ -55,7 +55,7 @@ public class Settings implements ActionListener {
         JOptionPane.showOptionDialog(null, settingsPanel,
                 "Settings",
                 JOptionPane.OK_CANCEL_OPTION,
-                JOptionPane.INFORMATION_MESSAGE,
+                JOptionPane.PLAIN_MESSAGE,
                 null, new String[]{"Ok", "Cancel"},
                 "Ok");
         props.setProperty(Constants.PROP_BRIGHTNESS_ENABLED, String.valueOf(enableBrightness.isSelected()));
