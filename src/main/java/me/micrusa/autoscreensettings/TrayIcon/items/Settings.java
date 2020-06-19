@@ -51,9 +51,8 @@ public class Settings implements ActionListener {
         settingsPanel.add(namePanel);
         settingsPanel.add(fieldPanel);
 
-        // Connect or quit
         JOptionPane.showOptionDialog(null, settingsPanel,
-                "Settings",
+                "AutoScreenSettings preferences",
                 JOptionPane.OK_CANCEL_OPTION,
                 JOptionPane.PLAIN_MESSAGE,
                 null, new String[]{"Ok", "Cancel"},
