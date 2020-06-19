@@ -52,12 +52,12 @@ public class Settings implements ActionListener {
         settingsPanel.add(fieldPanel);
 
         // Connect or quit
-        if (JOptionPane.showOptionDialog(null, settingsPanel,
+        JOptionPane.showOptionDialog(null, settingsPanel,
                 "Settings",
                 JOptionPane.OK_CANCEL_OPTION,
                 JOptionPane.INFORMATION_MESSAGE,
                 null, new String[]{"Ok", "Cancel"},
-                "Ok") != 0)
+                "Ok");
         props.setProperty(Constants.PROP_BRIGHTNESS_ENABLED, String.valueOf(enableBrightness.isSelected()));
         props.setProperty(Constants.PROP_NORMAL_BRIGHTNESS, brightness.getText());
         props.setProperty(Constants.PROP_NIGHT_BRIGHTNESS, nightBrightness.getText());
