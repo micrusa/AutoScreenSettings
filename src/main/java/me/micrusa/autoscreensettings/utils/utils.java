@@ -1,9 +1,10 @@
-package me.micrusa.autoscreensettings;
+package me.micrusa.autoscreensettings.utils;
 
 import ca.rmen.sunrisesunset.SunriseSunset;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import me.micrusa.autoscreensettings.Constants;
 
 import javax.swing.*;
 import java.io.*;

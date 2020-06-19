@@ -1,5 +1,8 @@
 package me.micrusa.autoscreensettings;
 
+import me.micrusa.autoscreensettings.TrayIcon.DisplayTray;
+import me.micrusa.autoscreensettings.utils.utils;
+
 import java.util.Properties;
 
 public class Main {
@@ -18,6 +21,7 @@ public class Main {
             utils.saveProps(props);
         }
         MainService.setupMainService().startService();
+        DisplayTray dt = new DisplayTray();
     }
 
 }

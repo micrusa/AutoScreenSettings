@@ -4,13 +4,9 @@ import ca.rmen.sunrisesunset.SunriseSunset;
 import me.micrusa.autoscreensettings.Constants;
 import me.micrusa.autoscreensettings.monitorController.Monitor;
 import me.micrusa.autoscreensettings.monitorController.MonitorController;
-import me.micrusa.autoscreensettings.utils;
+import me.micrusa.autoscreensettings.utils.utils;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.Calendar;
 import java.util.Properties;
 import java.util.TimerTask;
 
