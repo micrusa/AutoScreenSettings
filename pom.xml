@@ -24,6 +24,11 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>me.micrusa.autoscreensettings.Main</mainClass>
+                        </manifest>
+                    </archive>
                     <finalName>AutoScreenSettings</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
                     <descriptorRefs>
