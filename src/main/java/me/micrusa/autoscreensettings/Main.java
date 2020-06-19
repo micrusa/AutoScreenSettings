@@ -21,7 +21,6 @@ public class Main {
             utils.saveProps(props);
         }
         MainService.setupMainService().startService();
-        DisplayTray dt = new DisplayTray();
     }
 
 }

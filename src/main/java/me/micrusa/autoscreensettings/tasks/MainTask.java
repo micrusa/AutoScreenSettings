@@ -18,8 +18,8 @@ public class MainTask extends TimerTask {
     public void run() {
         Properties props = utils.getProps();
         MonitorController monitorController = new MonitorController();
-        //Get location just once every 12h
-        if (latestRun == 0 || System.currentTimeMillis() - latestRun >= 12 * 60 * 1000){
+        //Get location just once every 24h (If app is restarted it will request it again anyways)
+        if (latestRun == 0 || System.currentTimeMillis() - latestRun >= 24 * 60 * 1000){
             try {
                 location = utils.getLocation();
                 latestRun = System.currentTimeMillis();
