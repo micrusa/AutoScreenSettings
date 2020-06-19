@@ -34,10 +34,10 @@ public class LocationUtils {
                 lastQuery = System.currentTimeMillis();
             } catch (IOException e) {
                 lastQuery = 0; //Set to 0 to retry in next task run
-                if(location == null)
-                    location = new double[]{0.0, 0.0}; //If no location set it to 0.0 to avoid NullPointerException
                 utils.showException(e);
             }
+            if(location == null)
+                location = new double[]{0.0, 0.0}; //If no location set it to 0.0 to avoid NullPointerException
         }
     }
 
@@ -48,6 +48,10 @@ public class LocationUtils {
         JsonParser jp = new JsonParser();
         JsonElement root = jp.parse(new InputStreamReader((InputStream) request.getContent()));
         JsonObject rootobj = root.getAsJsonObject();
+        if(rootobj.get("status").getAsString().toLowerCase().contains("fail")){
+            utils.showException(new Exception("Failed getting location"));
+            return null;
+        }
         return new double[]{rootobj.get("lat").getAsDouble(), rootobj.get("lon").getAsDouble()};
     }
 
