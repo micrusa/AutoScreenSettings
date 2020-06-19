@@ -2,6 +2,8 @@ package me.micrusa.autoscreensettings.TrayIcon.items;
 
 import com.sun.scenario.effect.impl.sw.java.JSWPerspectiveTransformPeer;
 import me.micrusa.autoscreensettings.Constants;
+import me.micrusa.autoscreensettings.utils.LocationUtils;
+import me.micrusa.autoscreensettings.utils.SetScreenValues;
 import me.micrusa.autoscreensettings.utils.utils;
 
 import javax.swing.*;
@@ -64,5 +66,6 @@ public class Settings implements ActionListener {
         props.setProperty(Constants.PROP_NORMAL_CONTRAST, contrast.getText());
         props.setProperty(Constants.PROP_NIGHT_CONTRAST, nightContrast.getText());
         utils.saveProps(props);
+        SetScreenValues.setValuesByLocation(LocationUtils.getLat(), LocationUtils.getLon());
     }
 }
