@@ -33,4 +33,8 @@ public class MainService {
         mainTaskTimer.cancel();
     }
 
+    public DisplayTray getDisplayTray(){
+        return displayTray;
+    }
+
 }

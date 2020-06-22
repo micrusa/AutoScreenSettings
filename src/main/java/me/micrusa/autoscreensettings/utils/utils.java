@@ -68,7 +68,11 @@ public class utils {
     }
 
     public static void showException(Exception e){
-        JOptionPane.showMessageDialog(new JFrame(), "There was an exception in the code: " + e.toString(), "AutoScreenSettings Exception",
+        showException("AutoScreenSettings Exception", e);
+    }
+
+    public static void showException(String title, Exception e){
+        JOptionPane.showMessageDialog(new JFrame(), "There was an exception in the code: " + e.toString(), title,
                 JOptionPane.ERROR_MESSAGE);
     }
 }

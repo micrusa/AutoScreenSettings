@@ -35,5 +35,9 @@ public class DisplayTray {
         return new ImageIcon(ImageURL, desc).getImage();
     }
 
+    public void showMsg(String caption, String message){
+        trayIcon.displayMessage(caption, message, TrayIcon.MessageType.INFO);
+    }
+
 
 }
