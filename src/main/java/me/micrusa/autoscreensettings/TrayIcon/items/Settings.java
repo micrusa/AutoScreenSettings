@@ -31,6 +31,12 @@ public class Settings implements ActionListener {
         JTextField contrast = new JTextField(props.getProperty(Constants.PROP_NORMAL_CONTRAST));
         JLabel nightContrastLabel = new JLabel("Night contrast ", JLabel.RIGHT);
         JTextField nightContrast = new JTextField(props.getProperty(Constants.PROP_NIGHT_CONTRAST));
+        JCheckBox enableRgb = new JCheckBox("Enable RGB control",
+                Boolean.parseBoolean(props.getProperty(Constants.PROP_RGB_ENABLED)));
+        JLabel rgbLabel = new JLabel("Normal RGB ", JLabel.RIGHT);
+        JTextField rgb = new JTextField(props.getProperty(Constants.PROP_NORMAL_RGB));
+        JLabel nightRgbLabel = new JLabel("Night RGB ", JLabel.RIGHT);
+        JTextField nightRgb = new JTextField(props.getProperty(Constants.PROP_NIGHT_RGB));
         settingsPanel = new JPanel(false);
         settingsPanel.setLayout(new BoxLayout(settingsPanel,
                 BoxLayout.X_AXIS));
@@ -42,6 +48,9 @@ public class Settings implements ActionListener {
         namePanel.add(Box.createHorizontalStrut(10));
         namePanel.add(contrastLabel);
         namePanel.add(nightContrastLabel);
+        namePanel.add(Box.createHorizontalStrut(10));
+        namePanel.add(rgbLabel);
+        namePanel.add(nightRgbLabel);
         JPanel fieldPanel = new JPanel(false);
         fieldPanel.setLayout(new GridLayout(0, 1));
         fieldPanel.add(enableBrightness);
@@ -50,6 +59,9 @@ public class Settings implements ActionListener {
         fieldPanel.add(enableContrast);
         fieldPanel.add(contrast);
         fieldPanel.add(nightContrast);
+        fieldPanel.add(enableRgb);
+        fieldPanel.add(rgb);
+        fieldPanel.add(nightRgb);
         settingsPanel.add(namePanel);
         settingsPanel.add(fieldPanel);
 
@@ -65,6 +77,9 @@ public class Settings implements ActionListener {
         props.setProperty(Constants.PROP_CONTRAST_ENABLED, String.valueOf(enableContrast.isSelected()));
         props.setProperty(Constants.PROP_NORMAL_CONTRAST, contrast.getText());
         props.setProperty(Constants.PROP_NIGHT_CONTRAST, nightContrast.getText());
+        props.setProperty(Constants.PROP_RGB_ENABLED, String.valueOf(enableRgb.isSelected()));
+        props.setProperty(Constants.PROP_NORMAL_RGB, rgb.getText());
+        props.setProperty(Constants.PROP_NIGHT_RGB, nightRgb.getText());
         utils.saveProps(props);
         SetScreenValues.setValuesByLocation(LocationUtils.getLat(), LocationUtils.getLon());
     }

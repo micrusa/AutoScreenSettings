@@ -18,6 +18,9 @@ public class Main {
             props.setProperty(Constants.PROP_CONTRAST_ENABLED, "false");
             props.setProperty(Constants.PROP_NORMAL_CONTRAST, "70");
             props.setProperty(Constants.PROP_NIGHT_CONTRAST, "85");
+            props.setProperty(Constants.PROP_RGB_ENABLED, "true");
+            props.setProperty(Constants.PROP_NORMAL_RGB, "50, 50, 50");
+            props.setProperty(Constants.PROP_NIGHT_RGB, "50, 46, 39");
             utils.saveProps(props);
         }
         MainService.setupMainService().startService();

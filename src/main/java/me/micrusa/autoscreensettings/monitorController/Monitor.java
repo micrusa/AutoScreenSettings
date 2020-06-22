@@ -66,5 +66,28 @@ public class Monitor {
         else return "0K";
     }
 
+    public void setRGB(int red, int green, int blue) throws Win32Exception{
+        WinDef.DWORDByReference minRed = new WinDef.DWORDByReference();
+        WinDef.DWORDByReference curRed = new WinDef.DWORDByReference();
+        WinDef.DWORDByReference maxRed = new WinDef.DWORDByReference();
+        Dxva2.INSTANCE.GetMonitorRedGreenOrBlueDrive(this.handle, HighLevelMonitorConfigurationAPI.MC_DRIVE_TYPE.MC_RED_DRIVE, minRed, curRed, maxRed);
+        WinDef.DWORDByReference minGreen = new WinDef.DWORDByReference();
+        WinDef.DWORDByReference curGreen = new WinDef.DWORDByReference();
+        WinDef.DWORDByReference maxGreen = new WinDef.DWORDByReference();
+        Dxva2.INSTANCE.GetMonitorRedGreenOrBlueDrive(this.handle, HighLevelMonitorConfigurationAPI.MC_DRIVE_TYPE.MC_GREEN_DRIVE, minGreen, curGreen, maxGreen);
+        WinDef.DWORDByReference minBlue = new WinDef.DWORDByReference();
+        WinDef.DWORDByReference curBlue = new WinDef.DWORDByReference();
+        WinDef.DWORDByReference maxBlue = new WinDef.DWORDByReference();
+        Dxva2.INSTANCE.GetMonitorRedGreenOrBlueDrive(this.handle, HighLevelMonitorConfigurationAPI.MC_DRIVE_TYPE.MC_BLUE_DRIVE, minBlue, curBlue, maxBlue);
+        //Calculate values by % received
+        red = red * maxGreen.getValue().intValue() / 100;
+        green = green * maxGreen.getValue().intValue() / 100;
+        blue = blue * maxBlue.getValue().intValue() / 100;
+        //Apply values
+        Dxva2.INSTANCE.SetMonitorRedGreenOrBlueDrive(this.handle, HighLevelMonitorConfigurationAPI.MC_DRIVE_TYPE.MC_RED_DRIVE, red);
+        Dxva2.INSTANCE.SetMonitorRedGreenOrBlueDrive(this.handle, HighLevelMonitorConfigurationAPI.MC_DRIVE_TYPE.MC_GREEN_DRIVE, green);
+        Dxva2.INSTANCE.SetMonitorRedGreenOrBlueDrive(this.handle, HighLevelMonitorConfigurationAPI.MC_DRIVE_TYPE.MC_BLUE_DRIVE, blue);
+    }
+
 
 }
