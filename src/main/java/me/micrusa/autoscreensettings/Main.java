@@ -4,8 +4,10 @@ import me.micrusa.autoscreensettings.TrayIcon.DisplayTray;
 import me.micrusa.autoscreensettings.utils.AppInstaller;
 import me.micrusa.autoscreensettings.utils.utils;
 
+import javax.swing.*;
 import java.io.File;
 import java.net.URISyntaxException;
+import java.util.Arrays;
 import java.util.Properties;
 
 public class Main {
@@ -22,7 +24,7 @@ public class Main {
         } catch (URISyntaxException e) {
             utils.showException(e);
         }
-        if(!appFile.getPath().contains(System.getenv("APPDATA")) && !DEBUG)
+        if(!(args.length > 0) && !DEBUG)
             AppInstaller.openDialog();
         Properties props = utils.getProps();
         if(!props.getProperty(Constants.PROP_VER, "a").equals(Constants.PROPS_CURRENT_VER)){
