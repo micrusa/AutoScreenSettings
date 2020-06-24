@@ -50,7 +50,10 @@ public class LocationUtils {
         JsonObject rootobj = root.getAsJsonObject();
         if(rootobj.get("status").getAsString().toLowerCase().contains("fail")){
             utils.showException(new Exception("Failed getting location"));
-            return null;
+            if(location == null) {
+                throw new IOException("Failed to get location and there weren't any location before.");
+            } else
+                return location;
         }
         return new double[]{rootobj.get("lat").getAsDouble(), rootobj.get("lon").getAsDouble()};
     }
