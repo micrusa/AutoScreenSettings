@@ -6,6 +6,7 @@ public class Constants {
     public static final String SETTINGS_PATH = APPDATA_PATH + "settings.properties";
     public static final String APP_PATH = APPDATA_PATH + "app.jar";
     public static final String START_SCRIPT = "java -jar " + APP_PATH + " autorun";
+    public static final String UPDATE_SCRIPT = "java -jar " + APP_PATH + " update";
 
     public static final String PROPS_CURRENT_VER = "2";
     public static final String PROP_VER = "ver";

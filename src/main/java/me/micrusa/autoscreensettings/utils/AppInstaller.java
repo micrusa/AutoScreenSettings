@@ -36,8 +36,7 @@ public class AppInstaller {
             Files.copy(appFile, new File(Constants.APP_PATH));
             Advapi32Util.registrySetStringValue(WinReg.HKEY_LOCAL_MACHINE,
                     "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", "AutoScreenSettings", Constants.START_SCRIPT);
-            System.out.println(Constants.START_SCRIPT);
-            Runtime.getRuntime().exec(Constants.START_SCRIPT);
+            Runtime.getRuntime().exec(Constants.UPDATE_SCRIPT);
             System.exit(1);
         } catch (URISyntaxException | IOException e) {
             utils.showException("Error in installation", e);
