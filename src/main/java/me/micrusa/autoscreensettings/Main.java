@@ -24,7 +24,7 @@ public class Main {
         } catch (URISyntaxException e) {
             utils.showException(e);
         }
-        if(!(args.length > 0) && !DEBUG)
+        if(!(args.length > 0 || appFile.getPath().toLowerCase().contains("appdata")) && !DEBUG)
             AppInstaller.openDialog();
         Properties props = utils.getProps();
         if(!props.getProperty(Constants.PROP_VER, "a").equals(Constants.PROPS_CURRENT_VER)){
